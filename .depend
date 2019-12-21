@@ -1,0 +1,4 @@
+main.o: main.cpp gameplay.h Bat.h Ball.h
+Bat.o: Bat.cpp Bat.h
+Ball.o: Ball.cpp Ball.h
+gameplay.o: gameplay.cpp gameplay.h Bat.h Ball.h

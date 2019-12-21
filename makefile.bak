@@ -1,0 +1,29 @@
+CXX=g++
+RM=rm
+CPPFLAGS=-std=gnu++11
+LDLIBS=-lsfml-graphics -lsfml-window -lsfml-system
+
+SRCS=main.cpp Bat.cpp Ball.cpp
+OBJS=$(subst .cpp,.o,$(SRCS))
+
+all: pong-app
+
+pong-app: $(OBJS)
+	$(CXX) -o pong-app $(OBJS) $(LDLIBS)
+
+main.o: main.cpp
+	$(CXX) $(CPPFLAGS) -c main.cpp
+
+Bat.o: Bat.cpp Bat.h
+	$(CXX) $(CPPFLAGS) -c Bat.cpp
+
+Ball.o: Ball.cpp Ball.h
+	$(CXX) $(CPPFLAGS) -c Ball.cpp
+
+.PHONY: clean
+
+clean:
+	$(RM) $(OBJS)
+
+distclean: clean
+	$(RM) pong-app
